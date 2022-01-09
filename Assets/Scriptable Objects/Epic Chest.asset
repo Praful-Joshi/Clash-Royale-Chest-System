@@ -18,3 +18,4 @@ MonoBehaviour:
   min_gems: 45
   max_gems: 60
   timer: 15
+  cost: 30

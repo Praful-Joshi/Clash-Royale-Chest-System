@@ -10,6 +10,7 @@ public class ChestModel
     internal int min_gems;
     internal int max_gems;
     internal float timer;
+    internal int cost;
 
     internal ChestModel(ChestSO chestSO)
     {
@@ -19,5 +20,6 @@ public class ChestModel
         min_gems = chestSO.min_gems;
         max_gems = chestSO.max_gems;
         timer = chestSO.timer;
+        cost = chestSO.cost;
     }
 }

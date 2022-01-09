@@ -12,4 +12,5 @@ public class ChestSO : ScriptableObject
     public int min_gems;
     public int max_gems;
     public float timer;
+    public int cost;
 }

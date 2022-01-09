@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class ButtonManager : MonoBehaviour
 {
@@ -19,28 +20,22 @@ public class ButtonManager : MonoBehaviour
     public GameObject startTimer;
     public GameObject useGems;
 
-
+    public static event Action clickedUseGems;
+    public static event Action clickedChest;
 
     private void Awake()
     {
         chestService = this.GetComponent<ChestService>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
         
     }
 
     public void onClickChest()
     {
-        chestService.onClickChest();
+        clickedChest?.Invoke();
         chestActions.SetActive(true);
     }
 
@@ -64,6 +59,7 @@ public class ButtonManager : MonoBehaviour
                 Debug.Log("Press correct button");
                 break;
         }
+        chestService.onClickSlot();
     }
 
     public void onClickStartTimer()
@@ -74,6 +70,7 @@ public class ButtonManager : MonoBehaviour
 
     public void onClickUseGems()
     {
+        clickedUseGems?.Invoke();
         disableAll();
         //use gems logic
     }

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class ChestService : MonoBehaviour
 {
+    private int cost;
+    private int num_coins;
+    private int num_gems;
+    private float timer;
+
     private ChestModel model;
     public ChestSO[] chestSOList;
     private ChestSO chestSO;
@@ -11,7 +16,7 @@ public class ChestService : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        createNewChest();
+        
     }
 
     // Update is called once per frame
@@ -24,11 +29,35 @@ public class ChestService : MonoBehaviour
     {
         chestSO = chestSOList[Random.Range(0, 4)];
         model = new ChestModel(chestSO);
-        Debug.Log(model.name + " created");
+        cost = model.cost;
+        num_coins = Random.Range(model.min_coins, model.max_coins);
+        num_gems = Random.Range(model.min_gems, model.max_gems);
+        timer = model.timer;
     }
 
-    public void onClickChest()
+    public int getCost()
     {
-        Debug.Log("You unlocked " + model.name);
+        return cost;
+    }
+
+    public int getNumCoins()
+    {
+        return num_coins;
+    }
+
+    public int getNumGems()
+    {
+        return num_gems;
+    }
+
+    public float getTimer()
+    {
+        return timer;
+    }
+
+    internal void onClickSlot()
+    {
+        createNewChest();
+        Debug.Log(model.name + " created");
     }
 }
