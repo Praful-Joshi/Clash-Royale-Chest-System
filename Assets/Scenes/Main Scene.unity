@@ -206,7 +206,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 31105942}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 173584038}
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+        m_MethodName: onClickSlot
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &31105942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,7 +307,7 @@ GameObject:
   - component: {fileID: 150505146}
   - component: {fileID: 150505145}
   m_Layer: 5
-  m_Name: Chest Button
+  m_Name: Chest 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -363,7 +375,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 150505146}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 173584038}
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+        m_MethodName: onClickChest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &150505146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,6 +502,78 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 167224937}
   m_CullTransparentMesh: 1
+--- !u!1 &173584035
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 173584036}
+  - component: {fileID: 173584037}
+  - component: {fileID: 173584038}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &173584036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173584035}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 193.08142, y: 960.8186, z: -143.57779}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &173584037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173584035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb6acb31613007242b352fc4f0d4457d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chestSOList:
+  - {fileID: 11400000, guid: 4c60ba810f8d49e4dbbb58d6b17612b5, type: 2}
+  - {fileID: 11400000, guid: 687bc36f557f9b84787c620458f61a4c, type: 2}
+  - {fileID: 11400000, guid: 554479f9488df2348abe7c8365b89bad, type: 2}
+  - {fileID: 11400000, guid: 75446b9f3418511488475a5cc6af75f4, type: 2}
+--- !u!114 &173584038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173584035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6224ac9d5a9f7a84499926e0000b5c5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slot1: {fileID: 1085412498}
+  slot2: {fileID: 863705324}
+  slot3: {fileID: 31105939}
+  slot4: {fileID: 1253368005}
+  chest1: {fileID: 150505143}
+  chest2: {fileID: 1191983728}
+  chest3: {fileID: 1380711538}
+  chest4: {fileID: 1501021141}
+  chestActions: {fileID: 119327039}
+  startTimer: {fileID: 1640027589}
+  useGems: {fileID: 743423615}
 --- !u!1 &587670153
 GameObject:
   m_ObjectHideFlags: 0
@@ -1140,7 +1236,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 743423618}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 173584038}
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+        m_MethodName: onClickUseGems
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &743423618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1262,7 +1370,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 863705327}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 173584038}
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+        m_MethodName: onClickSlot
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &863705327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1812,7 +1932,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1085412501}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 173584038}
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+        m_MethodName: onClickSlot
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1085412501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1864,7 +1996,7 @@ GameObject:
   - component: {fileID: 1191983731}
   - component: {fileID: 1191983730}
   m_Layer: 5
-  m_Name: Chest Button (1)
+  m_Name: Chest 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1932,7 +2064,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1191983731}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 173584038}
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+        m_MethodName: onClickChest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1191983731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2054,7 +2198,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1253368008}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 173584038}
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+        m_MethodName: onClickSlot
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1253368008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2106,7 +2262,7 @@ GameObject:
   - component: {fileID: 1380711541}
   - component: {fileID: 1380711540}
   m_Layer: 5
-  m_Name: Chest Button (2)
+  m_Name: Chest 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2174,7 +2330,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1380711541}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 173584038}
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+        m_MethodName: onClickChest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1380711541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2265,7 +2433,7 @@ GameObject:
   - component: {fileID: 1501021144}
   - component: {fileID: 1501021143}
   m_Layer: 5
-  m_Name: Chest Button (3)
+  m_Name: Chest 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2333,7 +2501,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1501021144}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 173584038}
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+        m_MethodName: onClickChest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1501021144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2520,7 +2700,7 @@ GameObject:
   - component: {fileID: 1582035318}
   - component: {fileID: 1582035317}
   m_Layer: 5
-  m_Name: Title
+  m_Name: Chest System Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2724,7 +2904,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1640027592}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 173584038}
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+        m_MethodName: onClickStartTimer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1640027592
 MonoBehaviour:
   m_ObjectHideFlags: 0
