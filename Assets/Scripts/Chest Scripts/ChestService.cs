@@ -1,63 +1,60 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 
 public class ChestService : MonoBehaviour
 {
-    private int cost;
-    private int num_coins;
-    private int num_gems;
-    private float timer;
-
+    //other script ref
     private ChestModel model;
-    public ChestSO[] chestSOList;
+    private ChestController controller;
     private ChestSO chestSO;
 
-    // Start is called before the first frame update
+    //public variables
+    public ChestSO[] chestSOList;
+    public List<Vector3> spawnPositions;
+    public GameObject canvas;
+   
+
     void Start()
     {
-        
+        ButtonManager.clickedOnGenerateChests += spawnChests;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void spawnChests()
     {
-        
+        for(int i = 0; i < 4; i++)
+        {
+            createNewChest(spawnPositions[i]);
+        }
     }
 
-    private void createNewChest()
+    private void createNewChest(Vector3 spawnPos)
     {
-        chestSO = chestSOList[Random.Range(0, 4)];
+        int value = UnityEngine.Random.Range(1, 51);
+        if (value >= 1 && value <= 30)
+        {
+            chestSO = chestSOList[0];
+        }
+        else if (value >= 31 && value <= 42)
+        {
+            chestSO = chestSOList[1];
+        }
+        else if (value >= 43 && value <= 47)
+        {
+            chestSO = chestSOList[2];
+        }
+        else if (value >= 48 && value <= 50)
+        {
+            chestSO = chestSOList[3];
+        }
+
         model = new ChestModel(chestSO);
-        cost = model.cost;
-        num_coins = Random.Range(model.min_coins, model.max_coins);
-        num_gems = Random.Range(model.min_gems, model.max_gems);
-        timer = model.timer;
-    }
+        GameObject instance = Instantiate(model.prefab, spawnPos, Quaternion.identity);
+        instance.transform.SetParent(canvas.transform, false);
 
-    public int getCost()
-    {
-        return cost;
-    }
-
-    public int getNumCoins()
-    {
-        return num_coins;
-    }
-
-    public int getNumGems()
-    {
-        return num_gems;
-    }
-
-    public float getTimer()
-    {
-        return timer;
-    }
-
-    internal void onClickSlot()
-    {
-        createNewChest();
-        Debug.Log(model.name + " created");
+        controller = instance.GetComponent<ChestController>();
+        controller.init(model);
     }
 }

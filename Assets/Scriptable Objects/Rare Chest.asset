@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Rare Chest
   m_EditorClassIdentifier: 
   Name: Rare chest
+  id: 1
   min_coins: 300
   max_coins: 500
   min_gems: 20
   max_gems: 40
-  timer: 10
+  unlockTime: 10
   cost: 20
+  prefab: {fileID: 3614407969239584508, guid: 1d9ee7f5ee27ec04da4e57476f82041c, type: 3}

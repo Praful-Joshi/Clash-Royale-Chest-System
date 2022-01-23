@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Common Chest
   m_EditorClassIdentifier: 
   Name: Common chest
+  id: 0
   min_coins: 100
   max_coins: 200
   min_gems: 10
   max_gems: 20
-  timer: 5
+  unlockTime: 5
   cost: 10
+  prefab: {fileID: 6724231809130871178, guid: 6158b668d7d21e64e8ea944f55c1f4a6, type: 3}

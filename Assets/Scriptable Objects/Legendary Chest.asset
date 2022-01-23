@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6177893a440bce248a7fab093d671f9c, type: 3}
   m_Name: Legendary Chest
   m_EditorClassIdentifier: 
-  Name: Legendary chest
+  Name: Legendary Chest
+  id: 3
   min_coins: 1000
   max_coins: 2000
   min_gems: 80
   max_gems: 100
-  timer: 20
+  unlockTime: 20
   cost: 40
+  prefab: {fileID: 9208886484354834207, guid: e9005614c25e0e541aa441c0eba38a1c, type: 3}

@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Epic Chest
   m_EditorClassIdentifier: 
   Name: Epic Chest
+  id: 2
   min_coins: 600
   max_coins: 800
   min_gems: 45
   max_gems: 60
-  timer: 15
+  unlockTime: 15
   cost: 30
+  prefab: {fileID: 1412730111584875090, guid: 986e15168193a00479b860c068036f96, type: 3}
