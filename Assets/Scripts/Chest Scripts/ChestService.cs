@@ -26,11 +26,11 @@ public class ChestService : MonoBehaviour
     {
         for(int i = 0; i < 4; i++)
         {
-            createNewChest(spawnPositions[i]);
+            createNewChest(spawnPositions[i], i);
         }
     }
 
-    private void createNewChest(Vector3 spawnPos)
+    private void createNewChest(Vector3 spawnPos, int slotNum)
     {
         int value = UnityEngine.Random.Range(1, 51);
         if (value >= 1 && value <= 30)
@@ -55,6 +55,6 @@ public class ChestService : MonoBehaviour
         instance.transform.SetParent(canvas.transform, false);
 
         controller = instance.GetComponent<ChestController>();
-        controller.init(model);
+        controller.init(model, slotNum);
     }
 }

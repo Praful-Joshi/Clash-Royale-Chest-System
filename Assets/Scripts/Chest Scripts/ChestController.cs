@@ -9,7 +9,7 @@ public class ChestController : MonoBehaviour
     private ChestModel model;
     private ChestActionsManager chestActions;
 
-    public static event Action<int, int> clickedOnChest;
+    public static event Action<int, int, int, int> clickedOnChest;
 
     private Button chestButton;
 
@@ -18,21 +18,29 @@ public class ChestController : MonoBehaviour
     private int numGems;
     private int unlockTime;
     private int id;
+    private int slotNum;
 
-    public void init(ChestModel model)
+    private void Start()
+    {
+        
+    }
+
+    public void init(ChestModel model, int slotNum)
     {
         this.model = model;
+        this.slotNum = slotNum;
         setLocalValues();
         Debug.Log(this.model.name + " created with id " + id);
 
         chestButton = this.GetComponent<Button>();
-        chestButton.onClick.AddListener(onChestCLick);
+        chestButton.onClick.AddListener(onChestClick);
     }
 
-    private void onChestCLick()
+    private void onChestClick()
     {
         Debug.Log("Cost - " + cost + ", Unlock Time - " + unlockTime);
-        clickedOnChest?.Invoke(unlockTime, cost);
+        clickedOnChest?.Invoke(unlockTime, cost, id, slotNum);
+        chestButton.enabled = false;
     }
 
     private void setLocalValues()
