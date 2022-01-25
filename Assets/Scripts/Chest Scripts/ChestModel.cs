@@ -10,7 +10,7 @@ public class ChestModel
     internal int max_coins;
     internal int min_gems;
     internal int max_gems;
-    internal int unlockTime;
+    internal double unlockTime;
     internal int cost;
     internal GameObject prefab;
 

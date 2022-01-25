@@ -9,21 +9,16 @@ public class ChestController : MonoBehaviour
     private ChestModel model;
     private ChestActionsManager chestActions;
 
-    public static event Action<int, int, int, int> clickedOnChest;
+    public static event Action<double, int, int, int> clickedOnChest;
 
     private Button chestButton;
 
     private int cost;
     private int numCoins;
     private int numGems;
-    private int unlockTime;
+    private double unlockTime;
     private int id;
     private int slotNum;
-
-    private void Start()
-    {
-        
-    }
 
     public void init(ChestModel model, int slotNum)
     {
@@ -38,7 +33,6 @@ public class ChestController : MonoBehaviour
 
     private void onChestClick()
     {
-        Debug.Log("Cost - " + cost + ", Unlock Time - " + unlockTime);
         clickedOnChest?.Invoke(unlockTime, cost, id, slotNum);
         chestButton.enabled = false;
     }

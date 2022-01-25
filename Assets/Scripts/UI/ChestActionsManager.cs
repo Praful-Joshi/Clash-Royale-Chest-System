@@ -7,7 +7,7 @@ using TMPro;
 
 public class ChestActionsManager : MonoBehaviour
 {
-    public static event Action<int> clickedOnStartTimer;
+    public static event Action<int, double> clickedOnStartTimer;
     public static event Action clickedOnUseGems;
 
     public GameObject chestActions;
@@ -15,7 +15,8 @@ public class ChestActionsManager : MonoBehaviour
 
     private ChestService service;
 
-    private int cost, unlockTime, id, slotNum;
+    private int cost, id, slotNum;
+    private double unlockTime;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,7 @@ public class ChestActionsManager : MonoBehaviour
         ChestController.clickedOnChest += onClickChest;
     }
 
-    private void onClickChest(int unlockTime, int cost, int id, int slotNum)
+    private void onClickChest(double unlockTime, int cost, int id, int slotNum)
     {
         this.unlockTime = unlockTime;
         this.cost = cost;
@@ -37,7 +38,7 @@ public class ChestActionsManager : MonoBehaviour
     public void onClickStartTimer()
     {
         Debug.Log(slotNum);
-        clickedOnStartTimer?.Invoke(slotNum);
+        clickedOnStartTimer?.Invoke(slotNum, unlockTime);
         chestActions.SetActive(false);
     }
     
@@ -49,7 +50,8 @@ public class ChestActionsManager : MonoBehaviour
 
     private void updateStartTimerText()
     {
-        texts[0].text = unlockTime.ToString();
+        TimeSpan time = TimeSpan.FromMinutes(unlockTime);
+        texts[0].text = time.Hours.ToString() + ":" + time.Minutes.ToString() + ":" + time.Seconds.ToString();
     }
 
     private void updateUseGemsText()

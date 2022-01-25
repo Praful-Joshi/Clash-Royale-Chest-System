@@ -4,55 +4,41 @@ using UnityEngine;
 using TMPro;
 using System;
 using UnityEngine.UI;
+using System.Threading.Tasks;
 
 public class Timer : MonoBehaviour
 {
-    public List<GameObject> timers;
-    private ChestService chestService;
-
-    private bool timerActive = false;
-    private float currentTime;
-    public int startMinutes;
-
-    private TextMeshProUGUI timerText;
     private int slotNum;
 
-    private void Awake()
-    {
-        chestService = this.GetComponent<ChestService>();
-    }
+    public double currentTime;
 
-    private void Start()
-    {     
-    }
+
+
+    private TextMeshProUGUI timerText;
 
     private void Update()
     {
-        if(timerActive == true)
+        if(currentTime <= 0)
         {
-            currentTime = currentTime - Time.deltaTime;
-            if(currentTime <= 0)
-            {
-                timerActive = false;
-                resetTime();
-            }
+            CancelInvoke();
         }
+    }
+
+    public void startTimer(double unlockTime, int slotNum)
+    {
+        this.slotNum = slotNum;
+        currentTime = unlockTime * 60;
+        timerText = this.GetComponent<TextMeshProUGUI>();      
+        timerText.text = currentTime.ToString();
+
+        InvokeRepeating("timerLogic", 0f, 1f);
+    }
+
+    private void timerLogic()
+    {
+        currentTime--;
         TimeSpan time = TimeSpan.FromSeconds(currentTime);
         timerText.text = time.Hours.ToString() + ":" + time.Minutes.ToString() + ":" + time.Seconds.ToString();
     }
-
-    private void startTimer()
-    {
-        timerActive = true;
-    }
-
-    private void resetTime()
-    {
-        currentTime = startMinutes * 60;
-    }
-
-    private void onClickSlot(int slotNum, Vector3 slotPos)
-    {
-       
-    }
+    
 }

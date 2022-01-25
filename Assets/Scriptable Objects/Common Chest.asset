@@ -18,6 +18,6 @@ MonoBehaviour:
   max_coins: 200
   min_gems: 10
   max_gems: 20
-  unlockTime: 5
+  unlockTime: 0.2
   cost: 10
   prefab: {fileID: 6724231809130871178, guid: 6158b668d7d21e64e8ea944f55c1f4a6, type: 3}

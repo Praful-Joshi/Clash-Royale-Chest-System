@@ -22,7 +22,7 @@ public class ButtonManager : MonoBehaviour
         generateChestButton.enabled = false;
     }
 
-    private void onClickStartTimer(int slotNum)
+    private void onClickStartTimer(int slotNum, double unlockTime)
     {
         switch (slotNum)
         {

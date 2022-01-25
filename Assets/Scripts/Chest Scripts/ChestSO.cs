@@ -12,7 +12,7 @@ public class ChestSO : ScriptableObject
     public int max_coins;
     public int min_gems;
     public int max_gems;
-    public int unlockTime;
+    public double unlockTime;
     public int cost;
     public GameObject prefab;
 }

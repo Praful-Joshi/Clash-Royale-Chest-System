@@ -15,22 +15,27 @@ public class ChestService : MonoBehaviour
     public ChestSO[] chestSOList;
     public List<Vector3> spawnPositions;
     public GameObject canvas;
+
+
+    private GameObject[] createdChests;
    
 
     void Start()
     {
         ButtonManager.clickedOnGenerateChests += spawnChests;
+        TimerManager.timerCompleted += onTimerComplete;
     }
 
     private void spawnChests()
     {
+        createdChests = new GameObject[4];
         for(int i = 0; i < 4; i++)
         {
-            createNewChest(spawnPositions[i], i);
+            createdChests[i]  = createNewChest(spawnPositions[i], i);
         }
     }
 
-    private void createNewChest(Vector3 spawnPos, int slotNum)
+    private GameObject createNewChest(Vector3 spawnPos, int slotNum)
     {
         int value = UnityEngine.Random.Range(1, 51);
         if (value >= 1 && value <= 30)
@@ -56,5 +61,12 @@ public class ChestService : MonoBehaviour
 
         controller = instance.GetComponent<ChestController>();
         controller.init(model, slotNum);
+        return instance;
+    }
+
+    private void onTimerComplete(int slotNum)
+    {
+        Debug.Log(slotNum);
+        createdChests[slotNum].SetActive(false);
     }
 }
