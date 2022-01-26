@@ -7,12 +7,7 @@ using UnityEngine;
 public class ChestSO : ScriptableObject
 {
     public string Name;
-    public int id;
-    public int min_coins;
-    public int max_coins;
-    public int min_gems;
-    public int max_gems;
+    public int id, min_coins, max_coins, min_gems, max_gems, cost;
     public double unlockTime;
-    public int cost;
     public GameObject prefab;
 }

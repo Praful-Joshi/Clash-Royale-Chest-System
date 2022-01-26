@@ -6,34 +6,34 @@ using System;
 
 public class ChestController : MonoBehaviour
 {
+    //events
+    public static event Action<int> clickedOnChest;
+
+    //other script ref
     private ChestModel model;
-    private ChestActionsManager chestActions;
 
-    public static event Action<double, int, int, int> clickedOnChest;
-
+    //declaring components
     private Button chestButton;
 
-    private int cost;
-    private int numCoins;
-    private int numGems;
-    private double unlockTime;
-    private int id;
-    private int slotNum;
+    //declaring variables
+    internal int cost, numCoins, numGems, id, slotNum;
+    internal double unlockTime;
 
     public void init(ChestModel model, int slotNum)
     {
         this.model = model;
         this.slotNum = slotNum;
-        setLocalValues();
         Debug.Log(this.model.name + " created with id " + id);
 
+        setLocalValues();
+        
         chestButton = this.GetComponent<Button>();
         chestButton.onClick.AddListener(onChestClick);
     }
 
     private void onChestClick()
     {
-        clickedOnChest?.Invoke(unlockTime, cost, id, slotNum);
+        clickedOnChest?.Invoke(slotNum);
         chestButton.enabled = false;
     }
 

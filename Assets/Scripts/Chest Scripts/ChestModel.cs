@@ -5,13 +5,8 @@ using UnityEngine;
 public class ChestModel
 {
     internal string name;
-    internal int id;
-    internal int min_coins;
-    internal int max_coins;
-    internal int min_gems;
-    internal int max_gems;
+    internal int id, min_coins, max_coins, min_gems, max_gems, cost;
     internal double unlockTime;
-    internal int cost;
     internal GameObject prefab;
 
     internal ChestModel(ChestSO chestSO)

@@ -10,25 +10,26 @@ public class ChestService : MonoBehaviour
     private ChestModel model;
     private ChestController controller;
     private ChestSO chestSO;
-
-    //public variables
     public ChestSO[] chestSOList;
-    public List<Vector3> spawnPositions;
+
+    //declaring components
     public GameObject canvas;
+    public static GameObject[] createdChests;
 
+    //declaring variables
+    public List<Vector3> spawnPositions;
 
-    private GameObject[] createdChests;
-   
 
     void Start()
     {
-        ButtonManager.clickedOnGenerateChests += spawnChests;
-        TimerManager.timerCompleted += onTimerComplete;
+        createdChests = new GameObject[4];
+
+        TimerManager.timerCompleted += deactivateChest;
+        ChestActionsManager.clickedOnUseGems += deactivateChest;
     }
 
-    private void spawnChests()
-    {
-        createdChests = new GameObject[4];
+    public void spawnChests()
+    {        
         for(int i = 0; i < 4; i++)
         {
             createdChests[i]  = createNewChest(spawnPositions[i], i);
@@ -64,9 +65,8 @@ public class ChestService : MonoBehaviour
         return instance;
     }
 
-    private void onTimerComplete(int slotNum)
+    private void deactivateChest(int slotNum)
     {
-        Debug.Log(slotNum);
         createdChests[slotNum].SetActive(false);
     }
 }

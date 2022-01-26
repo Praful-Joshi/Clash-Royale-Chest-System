@@ -7,16 +7,22 @@ using TMPro;
 
 public class ChestActionsManager : MonoBehaviour
 {
-    public static event Action<int, double> clickedOnStartTimer;
-    public static event Action clickedOnUseGems;
+    //events
+    public static event Action<int> clickedOnStartTimer;
+    public static event Action<int> clickedOnUseGems;
 
+    //other script ref
+    private ChestController controller;
+
+    //declaring components
+    public Button useGemsButton;
     public GameObject chestActions;
     public List<TextMeshProUGUI> texts;
 
-    private ChestService service;
+    //declaring variables
+    private int slotNum;
+    private bool haveEnoughGems;
 
-    private int cost, id, slotNum;
-    private double unlockTime;
 
     // Start is called before the first frame update
     void Start()
@@ -24,38 +30,34 @@ public class ChestActionsManager : MonoBehaviour
         ChestController.clickedOnChest += onClickChest;
     }
 
-    private void onClickChest(double unlockTime, int cost, int id, int slotNum)
+    private void onClickChest(int slotNum)
     {
-        this.unlockTime = unlockTime;
-        this.cost = cost;
-        this.id = id;
         this.slotNum = slotNum;
+        controller = ChestService.createdChests[slotNum].GetComponent<ChestController>();
+
+        haveEnoughGems = controller.cost <= InventoryManager.startingGems;
+        useGemsButton.enabled = haveEnoughGems;
+
+        updateText();
         chestActions.SetActive(true);
-        updateStartTimerText();
-        updateUseGemsText();
+    }
+
+    private void updateText()
+    {
+        TimeSpan time = TimeSpan.FromMinutes(ChestService.createdChests[slotNum].GetComponent<ChestController>().unlockTime);
+        texts[0].text = time.Hours.ToString() + ":" + time.Minutes.ToString() + ":" + time.Seconds.ToString();
+        texts[1].text = ChestService.createdChests[slotNum].GetComponent<ChestController>().cost.ToString();
     }
 
     public void onClickStartTimer()
     {
-        Debug.Log(slotNum);
-        clickedOnStartTimer?.Invoke(slotNum, unlockTime);
+        clickedOnStartTimer?.Invoke(slotNum);
         chestActions.SetActive(false);
     }
-    
+
     public void onClickUseGems()
     {
-        clickedOnUseGems?.Invoke();
+        clickedOnUseGems?.Invoke(slotNum);
         chestActions.SetActive(false);
-    }
-
-    private void updateStartTimerText()
-    {
-        TimeSpan time = TimeSpan.FromMinutes(unlockTime);
-        texts[0].text = time.Hours.ToString() + ":" + time.Minutes.ToString() + ":" + time.Seconds.ToString();
-    }
-
-    private void updateUseGemsText()
-    {
-        texts[1].text = cost.ToString();
     }
 }

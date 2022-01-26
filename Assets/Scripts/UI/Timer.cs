@@ -8,13 +8,11 @@ using System.Threading.Tasks;
 
 public class Timer : MonoBehaviour
 {
-    private int slotNum;
-
-    public double currentTime;
-
-
-
+    //declaring components
     private TextMeshProUGUI timerText;
+
+    //declaring variables
+    public double currentTime;
 
     private void Update()
     {
@@ -24,9 +22,8 @@ public class Timer : MonoBehaviour
         }
     }
 
-    public void startTimer(double unlockTime, int slotNum)
-    {
-        this.slotNum = slotNum;
+    public void startTimer(double unlockTime)
+    { 
         currentTime = unlockTime * 60;
         timerText = this.GetComponent<TextMeshProUGUI>();      
         timerText.text = currentTime.ToString();
