@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6177893a440bce248a7fab093d671f9c, type: 3}
+  m_Name: Common Chest
+  m_EditorClassIdentifier: 
+  Name: Common chest
+  id: 0
+  min_coins: 100
+  max_coins: 200
+  min_gems: 10
+  max_gems: 20
+  unlockTime: 0.2
+  cost: 10
+  prefab: {fileID: 6724231809130871178, guid: 6158b668d7d21e64e8ea944f55c1f4a6, type: 3}
