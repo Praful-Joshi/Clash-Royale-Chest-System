@@ -3,7 +3,7 @@
 A modular chest reward system similar to those found in games like Clash Royale. The system allows players to collect chests, choose to unlock them immediately using gems or wait for a timer to complete, and collect randomized rewards.
 
 <p align="center">
-  <img src="preview.gif" alt="Gameplay Preview" />
+  <img src="preview.gif" alt="Gameplay GIF" />
 </p>
 
 ## 🏗️ System Architecture
